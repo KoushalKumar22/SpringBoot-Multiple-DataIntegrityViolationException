@@ -4,11 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import org.hibernate.annotations.CollectionIdMutability;
 
 @Entity
 @Table(name = "MembersData")
-public class Members {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID",nullable = false)
@@ -19,7 +18,7 @@ public class Members {
     @Column(name = "Name",nullable = false)
     @NotEmpty(message = "Please Provide An Name!")
     String name;
-    @Column(name ="Phone No",unique = true,nullable = false)
+    @Column(name ="PhoneNo",unique = true,nullable = false)
     @NotNull(message = "Phone No Cannot be Empty!")
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "Please enter An Valid Phone No")
     String phone;
@@ -28,7 +27,7 @@ public class Members {
     @Pattern(regexp = "^[0-9]{9,16}",message = "Please Enter An Valid Account No!")
     String accNo;
 
-    public Members(int id, String username, String name, String phone, String accNo) {
+    public Customer(int id, String username, String name, String phone, String accNo) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -36,7 +35,7 @@ public class Members {
         this.accNo = accNo;
     }
 
-    public Members() {
+    public Customer() {
     }
 
     public int getId() {
